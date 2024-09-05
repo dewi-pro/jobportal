@@ -1,0 +1,21 @@
+.permissions-tree {
+    .daredevel-tree {
+        border: none !important;
+        border-left: var(--bb-border-width) solid var(--bb-border-color) !important;
+        padding-top: 5px;
+
+        & > div {
+            padding-left: 10px;
+        }
+
+        &:not(:has(ul)) {
+            & > .daredevel-tree-anchor {
+                display: none;
+            }
+        }
+    }
+
+    .daredevel-tree-anchor {
+        top: 0.5rem !important;
+    }
+}
