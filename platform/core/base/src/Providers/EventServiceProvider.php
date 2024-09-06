@@ -98,7 +98,7 @@ class EventServiceProvider extends ServiceProvider
 
             $this->app->extend('core.middleware', function ($middleware) {
                 return array_merge($middleware, [
-                    EnsureLicenseHasBeenActivated::class,
+                    // EnsureLicenseHasBeenActivated::class,
                 ]);
             });
 

@@ -156,25 +156,25 @@ class RecruitmentProgressTable extends TableAbstract
 
     public function buttons(): array
     {
-        // $buttons = $this->addCreateButton(route('recruitment.create'), 'recruitment.create');
+        $buttons = $this->addCreateButton(route('recruitment.create'), 'recruitment.create');
 
-        if ($this->hasPermission('import-jobs.index')) {
-            $buttons['import'] = [
-                'link' => route('import-jobs.index'),
-                'text' =>
-                    BaseHelper::renderIcon('ti ti-upload')
-                    . trans('plugins/job-board::import.name'),
-            ];
-        }
+        // if ($this->hasPermission('import-jobs.index')) {
+        //     $buttons['import'] = [
+        //         'link' => route('import-jobs.index'),
+        //         'text' =>
+        //             BaseHelper::renderIcon('ti ti-upload')
+        //             . trans('plugins/job-board::import.name'),
+        //     ];
+        // }
 
-        if ($this->hasPermission('export-jobs.index')) {
-            $buttons['export'] = [
-                'link' => route('export-jobs.index'),
-                'text' =>
-                    BaseHelper::renderIcon('ti ti-download')
-                    . trans('plugins/job-board::export.jobs.name'),
-            ];
-        }
+        // if ($this->hasPermission('export-jobs.index')) {
+        //     $buttons['export'] = [
+        //         'link' => route('export-jobs.index'),
+        //         'text' =>
+        //             BaseHelper::renderIcon('ti ti-download')
+        //             . trans('plugins/job-board::export.jobs.name'),
+        //     ];
+        // }
 
         return $buttons;
     }

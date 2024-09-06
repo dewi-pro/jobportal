@@ -35,6 +35,7 @@ use Botble\JobBoard\Models\FunctionalArea;
 use Botble\JobBoard\Models\Invoice;
 use Botble\JobBoard\Models\Job;
 use Botble\JobBoard\Models\JobApplication;
+use Botble\JobBoard\Models\DatabaseInfo;
 use Botble\JobBoard\Models\RecruitmentProgress;
 use Botble\JobBoard\Models\JobExperience;
 use Botble\JobBoard\Models\JobShift;
@@ -59,6 +60,7 @@ use Botble\JobBoard\Repositories\Eloquent\DegreeTypeRepository;
 use Botble\JobBoard\Repositories\Eloquent\FunctionalAreaRepository;
 use Botble\JobBoard\Repositories\Eloquent\InvoiceRepository;
 use Botble\JobBoard\Repositories\Eloquent\JobApplicationRepository;
+use Botble\JobBoard\Repositories\Eloquent\DatabaseInfoRepository;
 use Botble\JobBoard\Repositories\Eloquent\JobExperienceRepository;
 use Botble\JobBoard\Repositories\Eloquent\JobRepository;
 use Botble\JobBoard\Repositories\Eloquent\JobShiftRepository;
@@ -83,6 +85,7 @@ use Botble\JobBoard\Repositories\Interfaces\DegreeTypeInterface;
 use Botble\JobBoard\Repositories\Interfaces\FunctionalAreaInterface;
 use Botble\JobBoard\Repositories\Interfaces\InvoiceInterface;
 use Botble\JobBoard\Repositories\Interfaces\JobApplicationInterface;
+use Botble\JobBoard\Repositories\Interfaces\DatabaseInfoInterface;
 use Botble\JobBoard\Repositories\Interfaces\JobExperienceInterface;
 use Botble\JobBoard\Repositories\Interfaces\JobInterface;
 use Botble\JobBoard\Repositories\Interfaces\RecruitmentProgressInterface;
@@ -170,6 +173,10 @@ class JobBoardServiceProvider extends ServiceProvider
 
         $this->app->singleton(JobApplicationInterface::class, function () {
             return new JobApplicationRepository(new JobApplication());
+        });
+
+        $this->app->singleton(DatabaseInfoInterface::class, function () {
+            return new DatabaseInfoRepository(new DatabaseInfo());
         });
 
         $this->app->singleton(AnalyticsInterface::class, function () {
@@ -306,6 +313,16 @@ class JobBoardServiceProvider extends ServiceProvider
                     'icon' => 'ti ti-file-check',
                     'url' => route('job-applications.index'),
                     'permissions' => ['job-applications.index'],
+                ])
+                ->registerItem([
+                    'id' => 'cms-plugins-job-board-database-info',
+                    'priority' => 0,
+                    'parent_id' => 'cms-plugins-job-board-main',
+                    'name' => trans('plugins/job-board::database-info.name'),
+                    'icon' => 'ti ti-file-check',
+                    'url' => route('db.index'),
+                    'permissions' => ['db.index'],
+
                 ])
                 ->registerItem([
                     'id' => 'cms-plugins-job-board-accounts',

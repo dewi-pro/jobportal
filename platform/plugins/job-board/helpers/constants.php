@@ -56,6 +56,10 @@ if (! defined('JOB_RECRUITMENT_MODULE_SCREEN_NAME')) {
     define('JOB_RECRUITMENT_MODULE_SCREEN_NAME', 'recruitment-Progress');
 }
 
+if (! defined('DATABASE_INFO_MODULE_SCREEN_NAME')) {
+    define('DATABASE_INFO_MODULE_SCREEN_NAME', 'database-info');
+}
+
 if (! defined('ACCOUNT_MODULE_SCREEN_NAME')) {
     define('ACCOUNT_MODULE_SCREEN_NAME', 'account');
 }

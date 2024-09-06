@@ -46,6 +46,26 @@ return [
         'parent_flag' => 'recruitment.index',
     ],
     [
+        'name' => 'Database',
+        'flag' => 'db.index',
+        'parent_flag' => 'plugins.job-board',
+    ],
+    [
+        'name' => 'Create',
+        'flag' => 'db.create',
+        'parent_flag' => 'db.index',
+    ],
+    [
+        'name' => 'Edit',
+        'flag' => 'db.edit',
+        'parent_flag' => 'db.index',
+    ],
+    [
+        'name' => 'Delete',
+        'flag' => 'db.destroy',
+        'parent_flag' => 'db.index',
+    ],
+    [
         'name' => 'Bulk Import Jobs',
         'flag' => 'import-jobs.index',
         'parent_flag' => 'jobs.index',

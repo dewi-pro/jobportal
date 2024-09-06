@@ -17,11 +17,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="flex-row navbar-nav">
+        <!-- <div class="flex-row navbar-nav">
             <div class="d-flex align-items-center me-3">
                 @include('core/base::global-search.navbar-input')
             </div>
-        </div>
+        </div> -->
 
         <div class="flex-row navbar-nav order-md-last">
             @if (BaseHelper::getAdminPrefix() != '')

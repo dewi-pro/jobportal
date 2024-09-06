@@ -1,4 +1,4 @@
-<x-core::alert type="warning">
+<!-- <x-core::alert type="warning">
     @if ($manageLicense = auth()->guard()->user()->hasPermission('core.manage.license'))
         <div>Your license is invalid. Please activate your license!</div>
     @else
@@ -86,4 +86,4 @@
         </a>
         to get a new purchase code.
     </p>
-</div>
+</div> -->

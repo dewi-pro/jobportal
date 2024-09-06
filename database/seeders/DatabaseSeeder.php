@@ -44,6 +44,7 @@ class DatabaseSeeder extends BaseSeeder
             FaqSeeder::class,
             MenuSeeder::class,
             JobApplicationSeeder::class,
+            DatabaseInfoSeeder::class,
         ]);
 
         $this->finished();

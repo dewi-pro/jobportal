@@ -238,6 +238,18 @@ AdminHelper::registerRoutes(function () {
             ])->wherePrimaryKey();
         });
 
+        Route::group(['prefix' => 'db', 'as' => 'db.'], function () {
+            Route::resource('', 'DatabaseInfoController')
+                ->except(['create', 'store'])
+                ->parameters(['' => 'database-info']);
+
+            Route::get('download-cv/{id}', [
+                'as' => 'download-cv',
+                'uses' => 'DatabaseInfoController@downloadCv',
+                'permission' => false,
+            ])->wherePrimaryKey();
+        });
+
         Route::group(['prefix' => 'invoices', 'as' => 'invoice.'], function () {
             Route::resource('', 'InvoiceController')
                 ->parameters(['' => 'invoice'])

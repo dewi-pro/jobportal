@@ -87,15 +87,15 @@ Route::group(['namespace' => 'Botble\Base\Http\Controllers'], function () {
                 'uses' => 'SystemController@getMenuItemsCount',
             ]);
 
-            Route::get('unlicensed', [
-                'as' => 'unlicensed',
-                'uses' => 'UnlicensedController@index',
-            ]);
+            // Route::get('unlicensed', [
+            //     'as' => 'unlicensed',
+            //     'uses' => 'UnlicensedController@index',
+            // ]);
 
-            Route::post('unlicensed', [
-                'as' => 'unlicensed.skip',
-                'uses' => 'UnlicensedController@postSkip',
-            ]);
+            // Route::post('unlicensed', [
+            //     'as' => 'unlicensed.skip',
+            //     'uses' => 'UnlicensedController@postSkip',
+            // ]);
 
             Route::group(
                 ['prefix' => 'notifications', 'as' => 'notifications.', 'controller' => NotificationController::class],

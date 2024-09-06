@@ -6,12 +6,15 @@
 <body>
     <p>Dear {{ $recruitmentProgress->nama_kandidat }},</p>
 
-    <p>Your job application status has been updated to "Process".</p>
+    <p>We have received your CV and we are interested in scheduling an interview session.</p>
 
-    <p>Please click the link below for further actions:</p>
+    <p>Our team will reach you via Whatsapp to schedule an Interview session.</p>
 
-    <a href="{{ $url }}">Click Here</a>
+    <p>Please fill out the link below to complete your data</p>
+
+    <a href="https://survey.antavaya.com/index.php/783242?lang=en">https://survey.antavaya.com/index.php/783242?lang=en</a>
 
     <p>Thank you!</p>
+    <p>AntaVaya Recruitment</p>
 </body>
 </html>

@@ -3,7 +3,7 @@
         ->user()
         ->hasPermission('core.manage.license');
 @endphp
-
+<!-- 
 <x-core::alert
     type="warning"
     :important="true"
@@ -32,7 +32,7 @@
             @endif
         </div>
     </div>
-</x-core::alert>
+</x-core::alert> -->
 
 @if ($manageLicense)
     @include('core/base::system.partials.license-activation-modal')
