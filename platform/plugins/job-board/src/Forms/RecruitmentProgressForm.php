@@ -95,14 +95,14 @@ class RecruitmentProgressForm extends FormAbstract
             'colspan' => 6,
         ])
         ->add('recruitment', 'datePicker', [
-            'label' => __('Recruitment'),
+            'label' => __('Interview Recruitment'),
             'name' => 'recruitment',
             'id' => 'recruitment',
             'value' => $this->getModel()->id ? BaseHelper::formatDate($this->getModel()->recruitment) : '',
             'colspan' => 6,
         ])
         ->add('user_date', 'datePicker', [
-            'label' => __('User Date'),
+            'label' => __('Interview User'),
             'name' => 'user_date',
             'id' => 'user_date',
             'value' => $this->getModel()->id ? BaseHelper::formatDate($this->getModel()->user_date) : '',
@@ -117,7 +117,7 @@ class RecruitmentProgressForm extends FormAbstract
         ])
         ->add('status', SelectField::class, StatusFieldOption::make()->choices(JobRecruitmentProgressStatusEnum::labels())->toArray())
         ->add('proses', 'number', [
-            'label' => __('Proses'),
+            'label' => __('Lama Proses'),
             'name' => 'proses',
             'id' => 'proses',
             'value' => $model->proses,

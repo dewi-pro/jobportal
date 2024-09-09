@@ -129,10 +129,10 @@ class RecruitmentProgressTable extends TableAbstract
                 ->alignLeft()
                 ->route('recruitment.edit'),
             Column::make('recruitment')
-                ->title(__('Recruitment'))
+                ->title(__('Interview Recruitment'))
                 ->alignLeft(),
             Column::make('user_date')
-                ->title(__('User'))
+                ->title(__('Interview User'))
                 ->alignLeft(),
             Column::make('psikotes')
                 ->title(__('Psikotes'))
@@ -144,7 +144,7 @@ class RecruitmentProgressTable extends TableAbstract
                 ->title(__('Tanggal Masuk'))
                 ->alignLeft(),
             Column::make('proses')
-                ->title(__('Proses'))
+                ->title(__('Lama Proses'))
                 ->alignLeft(),
             Column::make('sumber')
                 ->title(__('Sumber'))
@@ -213,11 +213,11 @@ class RecruitmentProgressTable extends TableAbstract
                 'type' => 'datePicker',
             ],
             'recruitment' => [
-                'title' => 'Recruitment',
+                'title' => 'Interview Recruitment',
                 'type' => 'datePicker',
             ],
             'user_date' => [
-                'title' => 'User',
+                'title' => 'Interview User',
                 'type' => 'datePicker',
             ],
             'tanggal_masuk' => [
