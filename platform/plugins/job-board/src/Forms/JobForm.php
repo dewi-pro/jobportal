@@ -159,7 +159,8 @@ class JobForm extends FormAbstract
                 ],
                 'choices' => $model && $model->company_id
                     ? [$model->company->id => $model->company->name]
-                    : ['' => __('Select company...')],
+                    : [21 => 'Antavaya'], // Ensure Antavaya is included in the choices
+                'data' => $model && $model->company_id ? $model->company_id : 21, // Set Antavaya as default
                 'help_block' => [
                     'text' => sprintf(
                         '%s%s',
