@@ -50,16 +50,16 @@
                         </div>
 
                     <div @if (!$isLoggedIn || empty($account->resume)) class="mb-4" @endif>
-                        <label class="form-label" for="resume_apply_now">{{ $isLoggedIn && !empty($account->resume) ? __('Resume Upload (optional)') : __('Resume Upload') }}</label>
-                        <input type="file" name="resume" class="form-control" id="resume_apply_now">
+                        <label class="form-label" for="resume_apply_now">{{__('Resume Upload') }}</label>
+                        <input type="file" name="resume" class="form-control" id="resume_apply_now" >
                     </div>
 
-                    @if ($isLoggedIn || !empty($account->resume))
+                    @if ($isLoggedIn && !empty($account->resume))
                         <div class="mb-4 mt-2">
                             <p class="job-apply-resume-info"><i class="mdi mdi-information"></i> {!! BaseHelper::clean(__('Your current resume :resume. Just upload a new resume if you want to change it.', ['resume' => Html::link(RvMedia::url($account->resume), $account->resume, ['target' => '_blank'])->toHtml()])) !!}</p>
                         </div>
                     @endif
-
+<!--
                     <div @if (!$isLoggedIn || empty($account->cover_letter)) class="mb-4" @endif>
                         <label class="form-label" for="cover_letter_apply_now">{{ $isLoggedIn && !empty($account->cover_letter) ? __('Cover Letter (optional)') : __('Cover Letter Upload') }}</label>
                         <input type="file" name="cover_letter" class="form-control" id="cover_letter_apply_now">
@@ -69,7 +69,7 @@
                         <div class="mb-4 mt-2">
                             <p class="job-apply-resume-info"><i class="mdi mdi-information"></i> {!! BaseHelper::clean(__('Your current cover letter :cover_letter. Just upload a new cover letter if you want to change it.', ['cover_letter' => Html::link(RvMedia::url($account->cover_letter), $account->cover_letter, ['target' => '_blank'])->toHtml()])) !!}</p>
                         </div>
-                    @endif
+                    @endif -->
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('job_board_enable_recaptcha_in_apply_job', 0))
                             <div class="mb-4">
