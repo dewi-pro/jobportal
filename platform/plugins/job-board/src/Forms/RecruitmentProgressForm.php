@@ -117,14 +117,14 @@ class RecruitmentProgressForm extends FormAbstract
         ])
         ->add('status', SelectField::class, StatusFieldOption::make()->choices(JobRecruitmentProgressStatusEnum::labels())->toArray())
         ->add('proses', 'number', [
-            'label' => __('Lama Proses'),
+            'label' => __('Proses'),
             'name' => 'proses',
             'id' => 'proses',
             'value' => $model->proses,
             'attr' => [
                 'placeholder' => __('Proses'),
             ],
-            'default_value' => 1,
+            'default_value' => 0,
             'colspan' => 6,
         ])
         ->add('sumber', 'text', [

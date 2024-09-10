@@ -341,12 +341,12 @@ class PublicController extends BaseController
 
             $jobType = $request->input('job_type');
 
-            if (($job->apply_url && $jobType !== 'external') ||
-                (! $job->apply_url && $jobType !== 'internal')
-            ) {
-                return $this
-                    ->httpResponse()->setError()->setMessage(__('This job is not available for apply.'));
-            }
+            // if (($job->apply_url && $jobType !== 'external') ||
+            //     (! $job->apply_url && $jobType !== 'internal')
+            // ) {
+            //     return $this
+            //         ->httpResponse()->setError()->setMessage(__('This job is not available for apply.'));
+            // }
 
             $account = null;
 

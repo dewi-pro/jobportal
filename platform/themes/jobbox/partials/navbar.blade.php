@@ -86,19 +86,19 @@
         <div class="mobile-header-content-area">
             <div class="perfect-scroll">
                 <div class="mobile-search mobile-header-border mb-30">
-                    <form action="#">
+                    <!-- <form action="#">
                         <input type="text" placeholder="{{ __('Search...') }}">
                         <i class="fi-rr-search"></i>
-                    </form>
+                    </form> -->
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
                     <nav>
-                        {!!
+                        <!-- {!!
                             Menu::renderMenuLocation('main-menu', [
                                 'options' => ['class' => 'mobile-menu font-heading'],
                                 'view'    => 'main-menu',
                             ])
-                        !!}
+                        !!} -->
                         @if (is_plugin_active('language'))
                             {!! Theme::partial('language-and-currency-switcher-mobile') !!}
                         @endif

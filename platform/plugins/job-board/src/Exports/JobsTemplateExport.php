@@ -75,7 +75,7 @@ class JobsTemplateExport implements FromCollection, WithHeadings
                 'latitude' => 10.823,
                 'longitude' => 20.212,
                 'content' => 'Content',
-                'apply_url' => 'https://example.com',
+                'apply_url' => '#',
                 'address' => '8642 Yule Street, Arvada CO 80007',
                 'country' => null,
                 'state' => null,

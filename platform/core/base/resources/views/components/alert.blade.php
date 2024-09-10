@@ -22,7 +22,7 @@
     };
 @endphp
 
-<div
+<!-- <div
     role="alert"
     {{ $attributes->class(['alert', $color, 'alert-dismissible' => $dismissible, 'alert-important' => $important]) }}
 >
@@ -51,7 +51,7 @@
         data-bs-dismiss="alert"
         aria-label="close"
     ></a>
-@endif
+@endif -->
 
-{{ $additional ?? '' }}
+<!-- {{ $additional ?? '' }} -->
 </div>

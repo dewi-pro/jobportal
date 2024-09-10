@@ -5,7 +5,7 @@
             <button class="{{ $classButtonApply }} disabled" disabled>{{ __('Applied') }}</button>
         @elseif ($job->apply_url)
             <button class="{{ $classButtonApply }}"
-                    data-bs-target="#ModalApplyExternalJobForm"
+                    data-bs-target="#ModalApplyJobForm"
                     data-bs-toggle="modal"
                     data-job-name="{{ $job->name }}"
                     data-job-id="{{ $job->id }}"

@@ -8,7 +8,7 @@
 @endphp
 
 @if (!$isLoggedIn || ($account && !$account->isEmployer()))
-    <div class="modal fade" id="ModalApplyJobForm" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="ModalApplyJobForm" tabindex="-1" aria-hidden="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content apply-job-form">
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -87,7 +87,7 @@
     </div><!-- END APPLY MODAL -->
 
     <!-- START APPLY MODAL -->
-    <div class="modal fade" id="ModalApplyExternalJobForm" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="ModalApplyJobForm" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content apply-job-form">
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -119,7 +119,16 @@
                         <input class="form-control" id="external-email" type="email" required="" value="{{ $isLoggedIn ? $account->email : '' }}"
                                name="email" placeholder="{{ __('Enter your email example: stevenjob@gmail.com') }}">
                     </div>
+                    <div @if (!$isLoggedIn || empty($account->resume)) class="mb-4" @endif>
+                        <label class="form-label" for="resume_apply_now">{{ $isLoggedIn && !empty($account->resume) ? __('Resume Upload (optional)') : __('Resume Upload') }}</label>
+                        <input type="file" name="resume" class="form-control" id="resume_apply_now">
+                    </div>
 
+                    @if ($isLoggedIn || !empty($account->resume))
+                        <div class="mb-4 mt-2">
+                            <p class="job-apply-resume-info"><i class="mdi mdi-information"></i> {!! BaseHelper::clean(__('Your current resume :resume. Just upload a new resume if you want to change it.', ['resume' => Html::link(RvMedia::url($account->resume), $account->resume, ['target' => '_blank'])->toHtml()])) !!}</p>
+                        </div>
+                    @endif
                     @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('job_board_enable_recaptcha_in_apply_job', 0))
                         <div class="mb-4">
                             {!! Captcha::display() !!}
