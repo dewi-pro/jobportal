@@ -35,11 +35,11 @@ class MenuTable extends TableAbstract
                 DeleteAction::make()->route('menus.destroy'),
             ])
             ->addBulkAction(DeleteBulkAction::make()->permission('menus.destroy'))
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                StatusBulkChange::make(),
-                CreatedAtBulkChange::make(),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     StatusBulkChange::make(),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 $query
                     ->select([

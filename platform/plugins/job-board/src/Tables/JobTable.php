@@ -100,40 +100,40 @@ class JobTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'name' => [
-                'title' => trans('core/base::tables.name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'status' => [
-                'title' => trans('core/base::tables.status'),
-                'type' => 'select',
-                'choices' => JobStatusEnum::labels(),
-                'validate' => 'required|in:' . implode(',', JobStatusEnum::values()),
-            ],
-            'moderation_status' => [
-                'title' => trans('plugins/job-board::job.moderation_status'),
-                'type' => 'select',
-                'choices' => ModerationStatusEnum::labels(),
-                'validate' => 'required|in:' . implode(',', ModerationStatusEnum::values()),
-            ],
-            'created_at' => [
-                'title' => trans('core/base::tables.created_at'),
-                'type' => 'datePicker',
-            ],
-            'type' => [
-                'title' => __('Type'),
-                'type' => 'select',
-                'choices' => [
-                    'expired' => __('Expired Jobs'),
-                    'without-company' => __('Jobs without a company'),
-                ],
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'name' => [
+    //             'title' => trans('core/base::tables.name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'status' => [
+    //             'title' => trans('core/base::tables.status'),
+    //             'type' => 'select',
+    //             'choices' => JobStatusEnum::labels(),
+    //             'validate' => 'required|in:' . implode(',', JobStatusEnum::values()),
+    //         ],
+    //         'moderation_status' => [
+    //             'title' => trans('plugins/job-board::job.moderation_status'),
+    //             'type' => 'select',
+    //             'choices' => ModerationStatusEnum::labels(),
+    //             'validate' => 'required|in:' . implode(',', ModerationStatusEnum::values()),
+    //         ],
+    //         'created_at' => [
+    //             'title' => trans('core/base::tables.created_at'),
+    //             'type' => 'datePicker',
+    //         ],
+    //         'type' => [
+    //             'title' => __('Type'),
+    //             'type' => 'select',
+    //             'choices' => [
+    //                 'expired' => __('Expired Jobs'),
+    //                 'without-company' => __('Jobs without a company'),
+    //             ],
+    //         ],
+    //     ];
+    // }
 
     public function getOperationsHeading(): array
     {

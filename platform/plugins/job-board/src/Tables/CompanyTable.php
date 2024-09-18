@@ -98,34 +98,34 @@ class CompanyTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'name' => [
-                'title' => trans('core/base::tables.name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'status' => [
-                'title' => trans('core/base::tables.status'),
-                'type' => 'select',
-                'choices' => BaseStatusEnum::labels(),
-                'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
-            ],
-            'created_at' => [
-                'title' => trans('core/base::tables.created_at'),
-                'type' => 'datePicker',
-            ],
-            'is_completed_profile' => [
-                'title' => __('Is completed profile?'),
-                'type' => 'select',
-                'choices' => [
-                    'completed' => __('Yes'),
-                    'incomplete' => __('No'),
-                ],
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'name' => [
+    //             'title' => trans('core/base::tables.name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'status' => [
+    //             'title' => trans('core/base::tables.status'),
+    //             'type' => 'select',
+    //             'choices' => BaseStatusEnum::labels(),
+    //             'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
+    //         ],
+    //         'created_at' => [
+    //             'title' => trans('core/base::tables.created_at'),
+    //             'type' => 'datePicker',
+    //         ],
+    //         'is_completed_profile' => [
+    //             'title' => __('Is completed profile?'),
+    //             'type' => 'select',
+    //             'choices' => [
+    //                 'completed' => __('Yes'),
+    //                 'incomplete' => __('No'),
+    //             ],
+    //         ],
+    //     ];
+    // }
 
     public function getOperationsHeading(): array
     {

@@ -169,36 +169,36 @@ class AccountTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'first_name' => [
-                'title' => __('First name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'last_name' => [
-                'title' => __('Last name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'email' => [
-                'title' => trans('core/base::tables.email'),
-                'type' => 'text',
-                'validate' => 'required|max:120|email',
-            ],
-            'created_at' => [
-                'title' => trans('core/base::tables.created_at'),
-                'type' => 'datePicker',
-            ],
-            'type' => [
-                'title' => __('Type'),
-                'type' => 'select',
-                'choices' => AccountTypeEnum::labels(),
-                'validate' => 'required|in:' . implode(',', AccountTypeEnum::values()),
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'first_name' => [
+    //             'title' => __('First name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'last_name' => [
+    //             'title' => __('Last name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'email' => [
+    //             'title' => trans('core/base::tables.email'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120|email',
+    //         ],
+    //         'created_at' => [
+    //             'title' => trans('core/base::tables.created_at'),
+    //             'type' => 'datePicker',
+    //         ],
+    //         'type' => [
+    //             'title' => __('Type'),
+    //             'type' => 'select',
+    //             'choices' => AccountTypeEnum::labels(),
+    //             'validate' => 'required|in:' . implode(',', AccountTypeEnum::values()),
+    //         ],
+    //     ];
+    // }
 
     public function applyFilterCondition(
         Relation|Builder|QueryBuilder $query,

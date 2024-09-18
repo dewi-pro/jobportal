@@ -43,11 +43,11 @@ class GalleryTable extends TableAbstract
             ->addBulkActions([
                 DeleteBulkAction::make()->permission('galleries.destroy'),
             ])
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                StatusBulkChange::make(),
-                CreatedAtBulkChange::make(),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     StatusBulkChange::make(),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->select([

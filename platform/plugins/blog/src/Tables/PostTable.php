@@ -93,16 +93,16 @@ class PostTable extends TableAbstract
             ->addBulkActions([
                 DeleteBulkAction::make()->permission('posts.destroy'),
             ])
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                StatusBulkChange::make(),
-                CreatedAtBulkChange::make(),
-                SelectBulkChange::make()
-                    ->name('category')
-                    ->title(trans('plugins/blog::posts.category'))
-                    ->searchable()
-                    ->choices(fn () => Category::query()->pluck('name', 'id')->all()),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     StatusBulkChange::make(),
+            //     CreatedAtBulkChange::make(),
+            //     SelectBulkChange::make()
+            //         ->name('category')
+            //         ->title(trans('plugins/blog::posts.category'))
+            //         ->searchable()
+            //         ->choices(fn () => Category::query()->pluck('name', 'id')->all()),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->with([

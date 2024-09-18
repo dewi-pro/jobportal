@@ -61,18 +61,18 @@ class CustomFieldTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'name' => [
-                'title' => trans('core/base::tables.name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'created_at' => [
-                'title' => trans('core/base::tables.created_at'),
-                'type' => 'datePicker',
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'name' => [
+    //             'title' => trans('core/base::tables.name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'created_at' => [
+    //             'title' => trans('core/base::tables.created_at'),
+    //             'type' => 'datePicker',
+    //         ],
+    //     ];
+    // }
 }

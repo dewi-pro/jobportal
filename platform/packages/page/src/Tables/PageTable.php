@@ -51,16 +51,16 @@ class PageTable extends TableAbstract
             ->addBulkActions([
                 DeleteBulkAction::make()->permission('pages.destroy'),
             ])
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                SelectBulkChange::make()
-                    ->name('template')
-                    ->title(trans('core/base::tables.template'))
-                    ->choices(fn () => get_page_templates())
-                    ->validate(['required', Rule::in(array_keys(get_page_templates()))]),
-                StatusBulkChange::make(),
-                CreatedAtBulkChange::make(),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     SelectBulkChange::make()
+            //         ->name('template')
+            //         ->title(trans('core/base::tables.template'))
+            //         ->choices(fn () => get_page_templates())
+            //         ->validate(['required', Rule::in(array_keys(get_page_templates()))]),
+            //     StatusBulkChange::make(),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 $query->select([
                     'id',

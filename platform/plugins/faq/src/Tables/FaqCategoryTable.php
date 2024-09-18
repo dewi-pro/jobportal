@@ -35,11 +35,11 @@ class FaqCategoryTable extends TableAbstract
                 DeleteAction::make()->route('faq_category.destroy'),
             ])
             ->addBulkAction(DeleteBulkAction::make()->permission('faq_category.destroy'))
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                StatusBulkChange::make(),
-                CreatedAtBulkChange::make(),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     StatusBulkChange::make(),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->select([

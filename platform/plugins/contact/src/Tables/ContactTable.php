@@ -46,15 +46,15 @@ class ContactTable extends TableAbstract
             ->addBulkActions([
                 DeleteBulkAction::make()->permission('contacts.destroy'),
             ])
-            ->addBulkChanges([
-                NameBulkChange::make(),
-                EmailBulkChange::make(),
-                StatusBulkChange::make()
-                    ->choices(ContactStatusEnum::labels())
-                    ->validate(['required', Rule::in(ContactStatusEnum::values())]),
-                CreatedAtBulkChange::make(),
-                PhoneBulkChange::make()->title(trans('plugins/contact::contact.sender_phone')),
-            ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make(),
+            //     EmailBulkChange::make(),
+            //     StatusBulkChange::make()
+            //         ->choices(ContactStatusEnum::labels())
+            //         ->validate(['required', Rule::in(ContactStatusEnum::values())]),
+            //     CreatedAtBulkChange::make(),
+            //     PhoneBulkChange::make()->title(trans('plugins/contact::contact.sender_phone')),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->select([

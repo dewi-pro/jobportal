@@ -118,31 +118,31 @@ class DatabaseInfoTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'first_name' => [
-                'title' => __('First name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'last_name' => [
-                'title' => __('Last name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'job_id' => [
-                'title' => __('Job Name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'email' => [
-                'title' => trans('core/base::tables.email'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'first_name' => [
+    //             'title' => __('First name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'last_name' => [
+    //             'title' => __('Last name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'job_id' => [
+    //             'title' => __('Job Name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'email' => [
+    //             'title' => trans('core/base::tables.email'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //     ];
+    // }
 
     public function getFilters(): array
     {

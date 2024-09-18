@@ -123,17 +123,17 @@ class UserTable extends TableAbstract
                             }
                         }
                     }),
-            ])
-            ->addBulkChanges([
-                NameBulkChange::make()
-                    ->name('username')
-                    ->title(trans('core/acl::users.username')),
-                EmailBulkChange::make(),
-                StatusBulkChange::make()
-                    ->choices(UserStatusEnum::labels())
-                    ->validate(['required', Rule::in(UserStatusEnum::values())]),
-                CreatedAtBulkChange::make(),
-            ])
+                ])
+            // ->addBulkChanges([
+            //     NameBulkChange::make()
+            //         ->name('username')
+            //         ->title(trans('core/acl::users.username')),
+            //     EmailBulkChange::make(),
+            //     StatusBulkChange::make()
+            //         ->choices(UserStatusEnum::labels())
+            //         ->validate(['required', Rule::in(UserStatusEnum::values())]),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->select([

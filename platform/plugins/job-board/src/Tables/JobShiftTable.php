@@ -75,24 +75,24 @@ class JobShiftTable extends TableAbstract
         ];
     }
 
-    public function getBulkChanges(): array
-    {
-        return [
-            'name' => [
-                'title' => trans('core/base::tables.name'),
-                'type' => 'text',
-                'validate' => 'required|max:120',
-            ],
-            'status' => [
-                'title' => trans('core/base::tables.status'),
-                'type' => 'select',
-                'choices' => BaseStatusEnum::labels(),
-                'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
-            ],
-            'created_at' => [
-                'title' => trans('core/base::tables.created_at'),
-                'type' => 'datePicker',
-            ],
-        ];
-    }
+    // public function getBulkChanges(): array
+    // {
+    //     return [
+    //         'name' => [
+    //             'title' => trans('core/base::tables.name'),
+    //             'type' => 'text',
+    //             'validate' => 'required|max:120',
+    //         ],
+    //         'status' => [
+    //             'title' => trans('core/base::tables.status'),
+    //             'type' => 'select',
+    //             'choices' => BaseStatusEnum::labels(),
+    //             'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
+    //         ],
+    //         'created_at' => [
+    //             'title' => trans('core/base::tables.created_at'),
+    //             'type' => 'datePicker',
+    //         ],
+    //     ];
+    // }
 }

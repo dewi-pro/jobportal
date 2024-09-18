@@ -42,12 +42,12 @@ class FaqTable extends TableAbstract
                 DeleteAction::make()->route('faq.destroy'),
             ])
             ->addBulkAction(DeleteBulkAction::make()->permission('faq.destroy'))
-            ->addBulkChanges([
-                TextBulkChange::make()
-                    ->name('question')
-                    ->title(trans('plugins/faq::faq.question')),
-                CreatedAtBulkChange::make(),
-            ])
+            // ->addBulkChanges([
+            //     TextBulkChange::make()
+            //         ->name('question')
+            //         ->title(trans('plugins/faq::faq.question')),
+            //     CreatedAtBulkChange::make(),
+            // ])
             ->queryUsing(function (Builder $query) {
                 return $query
                     ->select([
