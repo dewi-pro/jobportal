@@ -21,7 +21,7 @@ class ApplyJobRequest extends Request
             $rules = array_merge($rules, [
                 'first_name' => 'required|max:120|min:2',
                 'last_name' => 'required|max:120|min:2',
-                'resume' => 'required|file',
+                'resume' => 'nullable|file',
                 'cover_letter' => 'nullable|file',
                 'message' => 'nullable|max:1000',
                 'phone' => 'nullable|' . BaseHelper::getPhoneValidationRule(),
