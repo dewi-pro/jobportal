@@ -15,15 +15,16 @@ use Botble\JobBoard\Enums\ModerationStatusEnum;
 use Botble\JobBoard\Facades\JobBoardHelper;
 use Botble\JobBoard\Http\Requests\RecruitmentRequest;
 use Botble\JobBoard\Models\RecruitmentProgress;
+use Carbon\Carbon;
 
 class RecruitmentProgressForm extends FormAbstract
 {
    public function setup(): void
 {
-    $model = $this->getModel(); 
+    $model = $this->getModel();
     if (!$model) {
     }
-    
+
     $this
         ->setupModel(new RecruitmentProgress())
         ->setValidatorClass(RecruitmentRequest::class)
@@ -120,7 +121,9 @@ class RecruitmentProgressForm extends FormAbstract
             'label' => __('Proses'),
             'name' => 'proses',
             'id' => 'proses',
-            'value' => $model->proses,
+            'value' => $this->getModel()->id
+            ? Carbon::parse($this->getModel()->tanggal_masuk)->diffInDays(Carbon::parse($this->getModel()->tanggal_FPK))
+            : 0,
             'attr' => [
                 'placeholder' => __('Proses'),
             ],
@@ -141,5 +144,5 @@ class RecruitmentProgressForm extends FormAbstract
         ->add('catatan', TextareaField::class, DescriptionFieldOption::make()->toArray());
 }
 
-    
+
 }

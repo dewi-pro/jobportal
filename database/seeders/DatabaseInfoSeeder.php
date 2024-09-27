@@ -42,7 +42,7 @@ class DatabaseInfoSeeder extends BaseSeeder
                 'message' => $faker->realText(),
                 'job_id' => $jobs[$key]->id,
                 'account_id' => $account->id,
-                'status' => DatabaseInfoStatusEnum::CHECKED(),
+                'status' => DatabaseInfoStatusEnum::SUBMIT(),
             ]);
         }
     }

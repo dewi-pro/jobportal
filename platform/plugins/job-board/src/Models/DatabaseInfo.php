@@ -6,7 +6,7 @@ use Botble\Base\Casts\SafeContent;
 use Botble\Base\Models\BaseModel;
 use Botble\JobBoard\Enums\DatabaseInfoStatusEnum;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Log;
 use Botble\Base\Events\CreatedContentEvent;
 
 class DatabaseInfo extends BaseModel
@@ -32,11 +32,11 @@ class DatabaseInfo extends BaseModel
         'last_name' => SafeContent::class,
         'message' => SafeContent::class,
     ];
-    
+
     protected $attributes = [
         'status' => DatabaseInfoStatusEnum::SUBMIT,
     ];
-    
+
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class, 'job_id')->withDefault();
@@ -71,6 +71,7 @@ class DatabaseInfo extends BaseModel
         parent::boot();
 
         static::updating(function (DatabaseInfo $databaseInfo) {
+            $jobArray = $databaseInfo->job->toArray(); // Convert job to array
 
             if ($databaseInfo->isDirty('status')) {
                 $newStatus = $databaseInfo->status;
@@ -89,23 +90,22 @@ class DatabaseInfo extends BaseModel
                 } elseif ($newStatusValue === DatabaseInfoStatusEnum::PROCESS) {
 
                     $existingRecruitmentProgress = RecruitmentProgress::where('job_application_id', $databaseInfo->id)->first();
-                    
+
                     if (!$existingRecruitmentProgress) {
                         // Create a new RecruitmentProgress record
                         $recruitmentProgress = RecruitmentProgress::create([
                             'status' => JobRecruitmentProgressStatusEnum::PROCESS, // Adjust the status or other fields as necessary
                             'nama_kandidat' => $databaseInfo->first_name . ' ' . $databaseInfo->last_name,
-                            'tanggal_FPK' => now(),
-                            'job_application_id' => $databaseInfo->id,
+                            'tanggal_FPK' => $jobArray['created_at'],
                         ]);
                         $url = 'https://survey.antavaya.com/index.php/783242';
                         Mail::to($databaseInfo->email)->send(new JobApplicationStatusChanged($recruitmentProgress, $url));
 
-            
+
                     }
-            
+
                 }
-            
+
             }
         });
     }
