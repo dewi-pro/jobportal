@@ -45,6 +45,7 @@ class DatabaseSeeder extends BaseSeeder
             MenuSeeder::class,
             JobApplicationSeeder::class,
             DatabaseInfoSeeder::class,
+            RecruitmentProgressSeeder::class,
         ]);
 
         $this->finished();

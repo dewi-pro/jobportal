@@ -39,9 +39,9 @@ class RecruitmentProgressTable extends TableAbstract
     {
         $data = $this->table
             ->eloquent($this->query())
-            
+
             ->editColumn('tanggal_FPK', function (RecruitmentProgress $item) {
-                return $item->tanggal_FPK->format('d/m/Y');
+                return $item->tanggal_FPK ?$item->tanggal_FPK->format('d/m/Y'):'&mdash;';
             })
             ->editColumn('psikotes', function (RecruitmentProgress $item) {
                 return $item->psikotes ? $item->psikotes->format('d/m/Y'): '&mdash;';
@@ -129,10 +129,10 @@ class RecruitmentProgressTable extends TableAbstract
                 ->alignLeft()
                 ->route('recruitment.edit'),
             Column::make('recruitment')
-                ->title(__('Recruitment'))
+                ->title(__('Interview Recruitment'))
                 ->alignLeft(),
             Column::make('user_date')
-                ->title(__('User'))
+                ->title(__('Interview User'))
                 ->alignLeft(),
             Column::make('psikotes')
                 ->title(__('Psikotes'))

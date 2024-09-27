@@ -54,7 +54,7 @@ class DatabaseInfoTable extends TableAbstract
             })
             ->editColumn('full_name', function (DatabaseInfo $item) {
                 return trim($item->first_name . ' ' . $item->last_name) ?: '&mdash;';
-            })            
+            })
             ->editColumn('phone', function (DatabaseInfo $item) {
                 return $item->phone ?: '&mdash;';
             })

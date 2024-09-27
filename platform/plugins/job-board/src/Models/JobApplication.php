@@ -7,7 +7,7 @@ use Botble\Base\Models\BaseModel;
 use Botble\JobBoard\Enums\JobApplicationStatusEnum;
 use Botble\JobBoard\Enums\JobRecruitmentProgressStatusEnum;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Log;
 use Botble\Base\Events\CreatedContentEvent;
 use Illuminate\Support\Facades\Mail; // Import the Mail facade
 use App\Mail\JobApplicationStatusChanged; // Import the Mailable class
@@ -35,11 +35,11 @@ class JobApplication extends BaseModel
         'last_name' => SafeContent::class,
         'message' => SafeContent::class,
     ];
-    
+
     protected $attributes = [
         'status' => JobApplicationStatusEnum::SUBMIT,
     ];
-    
+
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class, 'job_id')->withDefault();
@@ -69,14 +69,16 @@ class JobApplication extends BaseModel
         return $url;
     }
 
+
     protected static function boot()
     {
         parent::boot();
 
-        static::updating(function (JobApplication $jobApplication) {
+        static::updating(function (JobApplication $jobApplications) {
+            $jobApplication = JobApplication::with('job:id,name,created_at')->find($jobApplications->id); // Limit fields
 
-            if ($jobApplication->isDirty('status')) {
-                $newStatus = $jobApplication->status;
+            if ($jobApplications->isDirty('status')) {
+                $newStatus = $jobApplications->status;
                 $reflection = new \ReflectionObject($newStatus);
                 if ($reflection->hasProperty('value')) {
                     $property = $reflection->getProperty('value');
@@ -92,23 +94,25 @@ class JobApplication extends BaseModel
                 } elseif ($newStatusValue === JobApplicationStatusEnum::PROCESS) {
 
                     $existingRecruitmentProgress = RecruitmentProgress::where('job_application_id', $jobApplication->id)->first();
-                    
+
                     if (!$existingRecruitmentProgress) {
-                        // Create a new RecruitmentProgress record
+
                         $recruitmentProgress = RecruitmentProgress::create([
-                            'status' => JobRecruitmentProgressStatusEnum::PROCESS, // Adjust the status or other fields as necessary
+                            'status' => JobRecruitmentProgressStatusEnum::PROCESS,
                             'nama_kandidat' => $jobApplication->first_name . ' ' . $jobApplication->last_name,
-                            'tanggal_FPK' => now(),
+                            'tanggal_FPK' => $jobApplication->job->created_at,
+                            'posisi' => $jobApplication->job->name,
+                            'job_id' => $jobApplication->job_id,
                             'job_application_id' => $jobApplication->id,
                         ]);
                         $url = 'https://survey.antavaya.com/index.php/783242';
-                        Mail::to($jobApplication->email)->send(new JobApplicationStatusChanged($recruitmentProgress, $url));
-
-            
+                        // Mail::to($jobApplications->email)->send(new JobApplicationStatusChanged($recruitmentProgress, $url));
+                        Mail::to($jobApplication->email)->queue(new JobApplicationStatusChanged($recruitmentProgress, $url));
+                        Log::warning('Cannot D:t ' );
                     }
-            
+
                 }
-            
+
             }
         });
     }

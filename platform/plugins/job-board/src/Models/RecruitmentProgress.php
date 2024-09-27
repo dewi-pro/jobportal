@@ -6,16 +6,8 @@ use Botble\Base\Casts\SafeContent;
 use Botble\Base\Models\BaseModel;
 use Botble\JobBoard\Enums\JobRecruitmentProgressStatusEnum;
 use Botble\JobBoard\Models\Builders\FilterJobsBuilder;
-// use Botble\Media\Facades\RvMedia;
-// use Carbon\Carbon;
-// use Illuminate\Database\Eloquent\Builder;
-// use Illuminate\Database\Eloquent\Casts\Attribute;
-// use Illuminate\Database\Eloquent\Relations\BelongsTo;
-// use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-// use Illuminate\Database\Eloquent\Relations\HasMany;
-// use Illuminate\Database\Eloquent\Relations\MorphMany;
-// use Illuminate\Database\Eloquent\Relations\MorphTo;
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Log;
 
 class RecruitmentProgress extends BaseModel
 {
@@ -36,6 +28,7 @@ class RecruitmentProgress extends BaseModel
         'proses',
         'sumber',
         'catatan',
+        'job_id',
         'job_application_id',
     ];
 
@@ -50,5 +43,47 @@ class RecruitmentProgress extends BaseModel
         'user' => SafeContent::class,
         'catatan' => SafeContent::class,
      ];
+
+     public function job(): BelongsTo
+    {
+        return $this->belongsTo(Job::class, 'job_id')->withDefault();
+    }
+
+protected static function boot()
+{
+    parent::boot();
+
+    static::updating(function (RecruitmentProgress $recruitmentProgress) {
+
+        if ($recruitmentProgress->isDirty('status')) {
+            $newStatus = $recruitmentProgress->status;
+            $reflection = new \ReflectionObject($newStatus);
+            if ($reflection->hasProperty('value')) {
+                $property = $reflection->getProperty('value');
+                $property->setAccessible(true);
+                $newStatusValue = $property->getValue($newStatus);
+            } else {
+                $newStatusValue = null; // Handle the case when value is not available
+            }
+
+            if ($newStatusValue === JobRecruitmentProgressStatusEnum::DONE) {
+                $job = Job::find($recruitmentProgress->job_id); // Ensure 'job_id' exists in RecruitmentProgress
+
+                if ($job) {
+                    // Check if number_of_positions is greater than 0 before decrementing
+                    if ($job->number_of_positions > 0) {
+                        $job->number_of_positions -= 1; // Decrement by 1
+                        $job->save(); // Save the changes
+                    } else {
+                        Log::warning('Cannot decrement number_of_positions as it is already 0 for job ID: ' . $job->id);
+                    }
+                } else {
+                    Log::error('Job not found for job_id: ' . $recruitmentProgress->job_id);
+                }
+            }
+
+        }
+    });
+}
 
 }

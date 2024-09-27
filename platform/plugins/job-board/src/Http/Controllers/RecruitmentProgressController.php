@@ -58,15 +58,15 @@ class RecruitmentProgressController extends BaseController
     {
 
         event(new BeforeEditContentEvent($request, $recruitment));
-        
+
         $this->pageTitle(trans('core/base::forms.edit_item', ['name' => $recruitment->nama_kandidat]));
-    
+
         return RecruitmentProgressForm::createFromModel($recruitment)->renderForm();
     }
 
     public function update(RecruitmentProgress $recruitment, RecruitmentRequest $request)
     {
-
+        
         $recruitment->fill($request->input());
         $recruitment->save();
 

@@ -41,7 +41,8 @@ class JobApplicationTable extends TableAbstract
                     return '&mdash;';
                 }
 
-                return Html::link(
+                return
+                Html::link(
                     $item->job->url,
                     $item->job->name . ' ' . Html::tag('i', '', ['class' => 'fas fa-external-link-alt']),
                     ['target' => '_blank'],
@@ -49,9 +50,9 @@ class JobApplicationTable extends TableAbstract
                     false
                 );
             })
-            ->editColumn('full_name', function (JobApplication $item) {
+            ->editColumn('first_name', function (JobApplication $item) {
                 return trim($item->first_name . ' ' . $item->last_name) ?: '&mdash;';
-            })            
+            })
             ->editColumn('phone', function (JobApplication $item) {
                 return $item->phone ?: '&mdash;';
             })
@@ -92,7 +93,7 @@ class JobApplicationTable extends TableAbstract
             Column::make('job_id')
                 ->title(__('Job Name'))
                 ->alignLeft(),
-            Column::make('full_name')
+            Column::make('first_name')
                 ->title(__('Kandidat'))
                 ->alignLeft(),
             Column::make('email')
@@ -165,7 +166,7 @@ class JobApplicationTable extends TableAbstract
                 'validate' => 'required|max:120',
             ],
             'job_id' => [
-                'title' => __('Job Name'),
+                'title' => 'Job Name',
                 'type' => 'text',
                 'validate' => 'required|max:120',
             ],

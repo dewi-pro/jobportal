@@ -1,4 +1,4 @@
-<x-core::modal
+<!-- <x-core::modal
     class="get-started-modal"
     size="lg"
     data-step="1"
@@ -291,4 +291,4 @@
             </div>
         </div>
     </x-slot:footer>
-</x-core::modal>
+</x-core::modal> -->
