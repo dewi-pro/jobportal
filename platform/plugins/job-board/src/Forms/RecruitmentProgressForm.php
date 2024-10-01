@@ -16,6 +16,7 @@ use Botble\JobBoard\Facades\JobBoardHelper;
 use Botble\JobBoard\Http\Requests\RecruitmentRequest;
 use Botble\JobBoard\Models\RecruitmentProgress;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class RecruitmentProgressForm extends FormAbstract
 {
@@ -118,14 +119,14 @@ class RecruitmentProgressForm extends FormAbstract
         ])
         ->add('status', SelectField::class, StatusFieldOption::make()->choices(JobRecruitmentProgressStatusEnum::labels())->toArray())
         ->add('proses', 'number', [
-            'label' => __('Proses'),
+            'label' => __('Lama Proses'),
             'name' => 'proses',
             'id' => 'proses',
-            'value' => $this->getModel()->id
+            'value' => $this->getModel()->tanggal_masuk
             ? Carbon::parse($this->getModel()->tanggal_masuk)->diffInDays(Carbon::parse($this->getModel()->tanggal_FPK))
             : 0,
             'attr' => [
-                'placeholder' => __('Proses'),
+                'placeholder' => __('Lama Proses'),
             ],
             'default_value' => 0,
             'colspan' => 6,
