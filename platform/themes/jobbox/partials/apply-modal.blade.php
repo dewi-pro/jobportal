@@ -52,7 +52,7 @@
                     <div @if (!$isLoggedIn || empty($account->resume)) class="mb-4" @endif>
                         <label class="form-label" for="resume_apply_now">{{__('Resume Upload') }}</label>
                         @if (!$isLoggedIn || empty($account->resume))
-                        <input type="file" name="resume" class="form-control" id="resume_apply_now" required="">
+                        <input type="file" name="resume" class="form-control" id="resume_apply_now" required="" accept=".pdf,.doc,.docx,.ppt,.pptx">
                         @endif
 
                         @if ($isLoggedIn && !empty($account->resume))
@@ -128,7 +128,7 @@
                     </div>
                     <div @if (!$isLoggedIn || empty($account->resume)) class="mb-4" @endif>
                         <label class="form-label" for="resume_apply_now">{{ $isLoggedIn && !empty($account->resume) ? __('Resume Upload (optional)') : __('Resume Upload') }}</label>
-                        <input type="file" name="resume" class="form-control" id="resume_apply_now">
+                        <input type="file" name="resume" class="form-control" id="resume_apply_now" accept=".pdf,.doc,.docx,.ppt,.pptx" required="">
                     </div>
 
                     @if ($isLoggedIn || !empty($account->resume))
