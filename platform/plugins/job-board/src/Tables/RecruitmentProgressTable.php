@@ -186,45 +186,12 @@ class RecruitmentProgressTable extends TableAbstract
         ];
     }
 
-    // public function getBulkChanges(): array
-    // {
-    //     return [
-    //         'nama_kandidat' => [
-    //             'title' => trans('core/base::tables.name'),
-    //             'type' => 'text',
-    //             'validate' => 'required|max:120',
-    //         ],
-    //         'status' => [
-    //             'title' => trans('core/base::tables.status'),
-    //             'type' => 'select',
-    //             'choices' => JobRecruitmentProgressStatusEnum::labels(),
-    //             'validate' => 'required|in:' . implode(',', JobRecruitmentProgressStatusEnum::values()),
-    //         ],
-    //         'tanggal_FPK' => [
-    //             'title' => 'Tanggal FPK',
-    //             'type' => 'datePicker',
-    //         ],
-    //         'psikotes' => [
-    //             'title' => 'Psikotes ',
-    //             'type' => 'datePicker',
-    //         ],
-    //         'offering_letter' => [
-    //             'title' => 'Offering Letter',
-    //             'type' => 'datePicker',
-    //         ],
-    //         'recruitment' => [
-    //             'title' => 'Recruitment',
-    //             'type' => 'datePicker',
-    //         ],
-    //         'user_date' => [
-    //             'title' => 'User',
-    //             'type' => 'datePicker',
-    //         ],
-    //         'tanggal_masuk' => [
-    //             'title' => 'Tanggal Masuk',
-    //             'type' => 'datePicker',
-    //         ],
-    //     ];
-    // }
+    public function getDefaultButtons(): array
+    {
+        return [
+            'export',
+            'reload',
+        ];
+    }
 
 }
