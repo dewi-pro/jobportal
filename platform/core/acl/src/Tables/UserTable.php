@@ -77,9 +77,9 @@ class UserTable extends TableAbstract
 
                         return UserStatusEnum::DEACTIVATED()->toHtml();
                     }),
-                YesNoColumn::make('super_user')
-                    ->title(trans('core/acl::users.is_super'))
-                    ->width(100),
+                // YesNoColumn::make('super_user')
+                //     ->title(trans('core/acl::users.is_super'))
+                //     ->width(100),
             ])
             ->addHeaderAction(CreateHeaderAction::make()->route('users.create'))
             ->when(Auth::guard()->user()->isSuperUser(), function () {
